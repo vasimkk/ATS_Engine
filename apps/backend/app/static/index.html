@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Score Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-purple"></div>
+        <div class="orb orb-cyan"></div>
+    </div>
+
+    <div class="container glass-panel">
+        <header>
+            <h1>ATS <span class="gradient-text">Scorer</span></h1>
+            <p>Hybrid Semantic AI Engine</p>
+        </header>
+
+        <main class="dashboard">
+            <section class="input-section">
+                <div class="drop-zone" id="drop-zone">
+                    <span class="icon">📄</span>
+                    <p>Drag & Drop your Resume (PDF)</p>
+                    <input type="file" id="resume-upload" hidden accept=".pdf">
+                </div>
+                
+                <div class="jd-input">
+                    <label for="jd-text">Job Description</label>
+                    <textarea id="jd-text" placeholder="Paste the exact required skills or full job description here..."></textarea>
+                </div>
+
+                <button id="analyze-btn" class="glow-on-hover" disabled>Analyze Match</button>
+            </section>
+
+            <section class="results-section">
+                <div class="score-ring-container">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle class="progress-ring__circle bg" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="transparent" r="80" cx="100" cy="100"/>
+                        <circle class="progress-ring__circle fg" stroke="url(#gradient)" stroke-width="12" fill="transparent" r="80" cx="100" cy="100"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00f2fe" />
+                                <stop offset="100%" stop-color="#4facfe" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="score-text">
+                        <span id="final-score">0</span><span class="percent">%</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Semantic AI</h3>
+                        <p id="semantic-score">--</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Fuzzy Match</h3>
+                        <p id="fuzzy-score">--</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Format</h3>
+                        <p id="format-score">--</p>
+                    </div>
+                </div>
+
+                <div class="actionable-insights" id="actionable-insights" style="display: none;">
+                    <h3>Missing Keywords</h3>
+                    <p>Add these to your resume to increase your score:</p>
+                    <div class="tags-container" id="missing-tags">
+                        <!-- Tags injected by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
