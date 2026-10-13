@@ -7,11 +7,11 @@ async def extract_resume_entities_llm(resume_text: str) -> list[str]:
     if not resume_text:
         return []
         
-    prompt = f"""You are an expert technical recruiter. 
-First, identify the core technical domain of the candidate (e.g., Frontend Engineering, Data Science, AI/ML, DevSecOps).
-Then, strictly based on that specific domain, extract all relevant technical and soft skills from the following resume.
-Ignore generic filler words or skills entirely outside this domain.
-Return ONLY a JSON array of strings containing the skills. No markdown, no explanations, just the JSON array. Example: ["Python", "Machine Learning", "Communication"]
+    prompt = f"""You are an expert recruiter and ATS analyzer.
+Extract all professional, technical, functional, domain-specific, and soft skills, certifications, qualifications, and competencies from the following resume.
+Extract them as concise skill phrases (e.g., ["Python", "Machine Learning", "Classroom Management", "Lesson Planning", "Communication", "Data Analysis"]).
+Ignore generic filler words.
+Return ONLY a valid JSON array of strings containing the skills. No markdown, no explanations, just the JSON array.
 
 Resume:
 {resume_text}
